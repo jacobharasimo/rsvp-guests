@@ -1,0 +1,244 @@
+/* This stylesheet is used to style the public-facing components of the plugin. */
+#rsvp-guest{}
+#rsvp-guest .row {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 75em;
+    *zoom: 1;
+}
+
+#rsvp-guest .row:before,#rsvp-guest  .row:after {
+    content: " ";
+    display: table;
+}
+
+#rsvp-guest .row:after {
+    clear: both;
+}
+
+#rsvp-guest .column,
+#rsvp-guest .columns {
+    position: relative;
+    padding-left: 0.9375em;
+    padding-right: 0.9375em;
+    width: 100%;
+    float: left;
+}
+
+#rsvp-guest form{margin: 0;
+    padding: 0;
+    direction: ltr;}
+
+#rsvp-guest form {
+    margin: 0 0 1em;
+}
+
+#rsvp-guest input[type="text"],
+#rsvp-guest input[type="password"],
+#rsvp-guest input[type="date"],
+#rsvp-guest input[type="datetime"],
+#rsvp-guest input[type="datetime-local"],
+#rsvp-guest input[type="month"],
+#rsvp-guest input[type="week"],
+#rsvp-guest input[type="email"],
+#rsvp-guest input[type="number"],
+#rsvp-guest input[type="search"],
+#rsvp-guest input[type="tel"],
+#rsvp-guest input[type="time"],
+#rsvp-guest input[type="url"],
+#rsvp-guest textarea {
+    background-color: white;
+    font-family: inherit;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    font-size: 0.875em;
+    margin: 0 0 2em 0;
+    padding: 0.5em;
+    height: 2.3125em;
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+    -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
+    transition: box-shadow 0.45s, border-color 0.45s ease-in-out;    
+}
+
+#rsvp-guest input[type="text"]:focus,
+#rsvp-guest input[type="password"]:focus,
+#rsvp-guest input[type="date"]:focus,
+#rsvp-guest input[type="datetime"]:focus,
+#rsvp-guest input[type="datetime-local"]:focus,
+#rsvp-guest input[type="month"]:focus,
+#rsvp-guest input[type="week"]:focus,
+#rsvp-guest input[type="email"]:focus,
+#rsvp-guest input[type="number"]:focus,
+#rsvp-guest input[type="search"]:focus,
+#rsvp-guest input[type="tel"]:focus,
+#rsvp-guest input[type="time"]:focus,
+#rsvp-guest input[type="url"]:focus,
+#rsvp-guest textarea:focus {
+    -webkit-box-shadow: 0 0 5px #999999;
+    -moz-box-shadow: 0 0 5px #999999;
+    box-shadow: 0 0 5px #999999;
+    border-color: #999999;
+}
+
+#rsvp-guest input[type="text"]:focus,
+#rsvp-guest input[type="password"]:focus,
+#rsvp-guest input[type="date"]:focus,
+#rsvp-guest input[type="datetime"]:focus,
+#rsvp-guest input[type="datetime-local"]:focus,
+#rsvp-guest input[type="month"]:focus,
+#rsvp-guest input[type="week"]:focus,
+#rsvp-guest input[type="email"]:focus,
+#rsvp-guest input[type="number"]:focus,
+#rsvp-guest input[type="search"]:focus,
+#rsvp-guest input[type="tel"]:focus,
+#rsvp-guest input[type="time"]:focus,
+#rsvp-guest input[type="url"]:focus,
+#rsvp-guest textarea:focus {
+    background: #fafafa;
+    border-color: #999999;
+    outline: none;
+}
+
+#rsvp-guest input[type="text"][disabled],
+#rsvp-guest input[type="password"][disabled],
+#rsvp-guest input[type="date"][disabled],
+#rsvp-guest input[type="datetime"][disabled],
+#rsvp-guest input[type="datetime-local"][disabled],
+#rsvp-guest input[type="month"][disabled],
+#rsvp-guest input[type="week"][disabled],
+#rsvp-guest input[type="email"][disabled],
+#rsvp-guest input[type="number"][disabled],
+#rsvp-guest input[type="search"][disabled],
+#rsvp-guest input[type="tel"][disabled],
+#rsvp-guest input[type="time"][disabled],
+#rsvp-guest input[type="url"][disabled],
+#rsvp-guest textarea[disabled] {
+    background-color: #dddddd;
+}
+/* Adjust margin for form elements below */
+#rsvp-guest input[type="file"],
+#rsvp-guest input[type="checkbox"],
+#rsvp-guest input[type="radio"],
+#rsvp-guest select {
+	line-height:1;
+	font-size:14px;
+    margin: 0 0 1em 0;
+    margin-bottom: 2em;
+    width: 100%;
+    padding: 0.4em
+
+}
+
+/* Normalize file input width */
+#rsvp-guest input[type="file"] {
+    width: 100%;
+}
+
+#rsvp-guest small.error {
+    display: block;
+    padding: 0.375em 0.25em;
+    margin-top: -2.3125em;
+    margin-bottom: 1em;
+    font-size: 0.75em;
+    font-weight: bold;
+    background: #c60f13;
+    color: white;
+
+    display: block;
+	position: absolute;
+	width: 96.5%;
+	margin-bottom:0;
+}
+
+#rsvp-guest .error input,
+#rsvp-guest .error textarea,
+#rsvp-guest .error select {
+    border-color: #c60f13;
+    background-color: rgba(198, 15, 19, 0.1);
+    margin-bottom: 0;
+}
+
+#rsvp-guest .error input:focus,
+#rsvp-guest .error textarea:focus,
+#rsvp-guest .error select:focus {
+    background: #fafafa;
+    border-color: #999999;
+}
+
+#rsvp-guest .error label,
+#rsvp-guest .error label.error {
+    color: #c60f13;
+}
+#rsvp-guest input.error,
+#rsvp-guest textarea.error,
+#rsvp-guest textarea[aria-invalid=true],
+#rsvp-guest select[aria-invalid=true],
+#rsvp-guest input[aria-invalid=true] {
+    border-color: #c60f13;
+    background-color: rgba(198, 15, 19, 0.1);
+}
+
+#rsvp-guest input.error:focus,
+#rsvp-guest textarea.error:focus 
+#rsvp-guest textarea:focus[aria-invalid=true],
+#rsvp-guest input:focus[aria-invalid=true] {
+    background: #fafafa;
+    border-color: #999999;
+}
+
+#rsvp-guest .error select {
+    border-color: #c60f13;
+    background-color: rgba(198, 15, 19, 0.1);
+}
+
+#rsvp-guest .error select:focus {
+    background: #fafafa;
+    border-color: #999999;
+}
+
+#rsvp-guest label.error {
+    color: #c60f13;
+}
+#rsvp-guest input[type="submit"]{
+	background-color:#F07677;
+}
+#rsvp-guest input[type="submit"][aria-disabled=true],
+#rsvp-guest input[type="submit"]:disabled{
+	opacity:.7;
+	
+}
+
+form#rsvp-guest[data-abide=true] .error
+{
+    display: none;
+}
+
+#rsvp-guest input[type="submit"][aria-disabled=true]:hover,
+#rsvp-guest input[type="submit"]:disabled:hover{
+	opacity:.7;
+	background-color: #F07677;
+}
+
+@media only screen {
+    #rsvp-guest .column,
+    #rsvp-guest .columns {
+        position: relative;
+        padding-left: 0.9375em;
+        padding-right: 0.9375em;
+        float: left;
+    }
+    #rsvp-guest .large-12 {
+        position: relative;
+        width: 100%;
+    }
+}
