@@ -11,10 +11,11 @@
  * @link      
  * @copyright 2014 Jacob Harasimo
  */
+
 ?>
 
 <!-- This file is used to markup the public facing aspect of the plugin. -->
-<form action="/#wpcf7-f203-p4-o1" method="post" class="" id="rsvp-guest" aria-invalid="false" data-abide="true">				
+<form action="" method="post" class="" id="rsvp-guest" aria-invalid="false" data-abide="true">				
 	<div class="row">
 		<div class="columns large-12">
 			<h2>ARE YOU ATTENDING?</h2>

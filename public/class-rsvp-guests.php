@@ -70,6 +70,9 @@ class Rsvp_Guests {
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
+		// Include the Ajax library on the front end
+		add_action( 'wp_head', array( $this, 'add_ajax_library' ) );
+
 		// Load public-facing style sheet and JavaScript.
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -84,9 +87,26 @@ class Rsvp_Guests {
 
 	}
 
+
+	/**
+	 * Adds the WordPress Ajax Library to the frontend.
+	 */
+	public function add_ajax_library() {
+
+		$html = '<script type="text/javascript">';
+			$html .= 'var ajaxurl = {location:"' . addslashes(admin_url( 'admin-ajax.php' )) . '"}';
+		$html .= '</script>';
+
+		echo $html;	
+
+	} // end add_ajax_library
 	
-	public function get_public_view(){
-		include_once( 'views/public.php' );
+	public function get_public_view(){		
+		ob_start();
+		eval('?>' . file_get_contents( 'views/public.php', TRUE ) . '<?php ');
+		$output_string = ob_get_contents();
+		ob_end_clean();		
+		return $output_string;
 	}
 
 
