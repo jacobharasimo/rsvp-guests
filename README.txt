@@ -54,6 +54,7 @@ you put the stable version, in order to eliminate any doubt.
 3. Select `RSVP Guests.zip` from your computer
 4. Click 'Install Now'
 5. Activate the plugin in the Plugin dashboard
+6. Short code [rsvp_guests] to active form in a post
 
 = Using FTP =
 
