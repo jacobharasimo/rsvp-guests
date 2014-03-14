@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       RSVP Guests
  * Plugin URI:        
- * Description:       Creates a form that allows users to RSVP to an event with guest listed in the dashboard
+ * Description:       Creates a form that allows users to RSVP to an event with guest listed in the dashboard. Shortcode [rsvp_guests]
  * Version:           1.0.0
  * Author:            Jacob Harasimo
  * Author URI:        

@@ -11,21 +11,15 @@
 		// Place your public-facing JavaScript here
 		function rsvp_event(){
 
-			jQuery.ajax({
-				type: "post",
-				url: ajaxurl.location,
-				data: { 
-					action: 'gethello4',					
-					_ajax_nonce: '<?php echo $nonce; ?>' 
-				},
-				beforeSend: function() {
-					jQuery("#helloworld").fadeOut('fast');
-					}, //fadeIn loading just when link is clicked
-				success: function(html){ //so, if data is retrieved, store it in html
-					jQuery("#helloworld").html(html); //fadeIn the html inside helloworld div
-					jQuery("#helloworld").fadeIn("fast"); //animation
-				}
-			}); //close jQuery.ajax(
+jQuery.post(ajaxurl.location,{
+			action: 'my_custom_handler',
+			formData:$('#rsvp-guest').serializeArray(),
+},function(response){
+
+}).fail(function(){
+
+});
+
 		}
 	});
 
