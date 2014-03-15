@@ -98,15 +98,23 @@
 
 		}
 
-	public function my_custom_handler(){
-		$data = $_REQUEST['formData'];
+	public function my_custom_handler(){		
+		$response = new RsvpAjaxRequest();		
+		$response -> Message = "Server Error Parsing Data";
+		$data = json_decode(stripslashes($_REQUEST['formData']));		
+		$respose -> Data = json_last_error();
+		if(!$response -> Data){
+			$response -> Success = false;
+			$response -> Message = "Form recieved";
+			$response -> Data = $data;
+		}		
 
-		$response = new RsvpAjaxRequest();
-		$response -> Success = true;
-		$response -> Message = "Test call";
-		$response -> Data = $data;
 
-		die(json_encode($data));
+
+
+
+
+		die(json_encode($response));
 	}
 		/**
 		 * Adds the WordPress Ajax Library to the frontend.

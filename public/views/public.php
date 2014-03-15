@@ -15,7 +15,7 @@
 ?>
 
 <!-- This file is used to markup the public facing aspect of the plugin. -->
-<form method="post" class="" id="rsvp-guest" aria-invalid="false" data-abide="true">				
+<form method="post" class="" id="rsvp-guest" aria-invalid="false">				
 	<div class="row">
 		<div class="columns large-12">
 			<h2>ARE YOU ATTENDING?</h2>
@@ -64,12 +64,16 @@
 			<input type="submit" value="I am attending" role="button" aria-disabled="false">							
 		</div>
 	</div>
-	<div class="row">
-		<div class="columns large-12">
-			<div class="responses" style="display:none">
-				
-
+	
+	<!-- style="visibility: collapse;" -->
+	<div class="row response">
+		<div class="columns response">
+			<div class="response-area">
+				<p class="response-text"></p>				
 			</div>
-		</div>
-	</div>		
+			
+		</div>		
+	</div>
+	
+	<div class="loading" style="display:none;">Loading</div>
 </form>

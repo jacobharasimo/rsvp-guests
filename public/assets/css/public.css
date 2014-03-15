@@ -1,5 +1,16 @@
 /* This stylesheet is used to style the public-facing components of the plugin. */
-#rsvp-guest{}
+#rsvp-guest{width: 100%;
+position: relative;}
+
+#rsvp-guest .columns.response{height:3em;overflow: hidden;}
+#rsvp-guest .response-area{height:100%;color:white;display:none;margin: 0;padding-left: .5em;
+padding-top: .5em;
+}
+
+#rsvp-guest[aria-invalid=true] .response-area{background-color:red;}
+#rsvp-guest[aria-invalid=false] .response-area{background-color:green;}
+#rsvp-guest .response.error{background-color:red;}
+#rsvp-guest .response.success{background-color:green;}
 #rsvp-guest .row {
     width: 100%;
     margin-left: auto;
@@ -8,11 +19,18 @@
     margin-bottom: 0;
     max-width: 75em;
     *zoom: 1;
+    -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 
-#rsvp-guest .row:before,#rsvp-guest  .row:after {
+#rsvp-guest .row:before,
+#rsvp-guest  .row:after {
     content: " ";
     display: table;
+    -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 
 #rsvp-guest .row:after {
@@ -26,11 +44,17 @@
     padding-right: 0.9375em;
     width: 100%;
     float: left;
+    -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 
 #rsvp-guest form{margin: 0;
     padding: 0;
-    direction: ltr;}
+    direction: ltr;
+-moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;}
 
 #rsvp-guest form {
     margin: 0 0 1em;
@@ -135,8 +159,10 @@
     margin: 0 0 1em 0;
     margin-bottom: 2em;
     width: 100%;
-    padding: 0.4em
-
+    padding: 0.4em;
+    -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
 }
 
 /* Normalize file input width */
@@ -156,7 +182,7 @@
 
     display: block;
 	position: absolute;
-	width: 96.5%;
+	width: 92.5%;
 	margin-bottom:0;
 }
 
@@ -210,6 +236,7 @@
     color: #c60f13;
 }
 #rsvp-guest input[type="submit"]{
+    margin-top:1em;
 	background-color:#F07677;
 }
 #rsvp-guest input[type="submit"][aria-disabled=true],
@@ -218,7 +245,7 @@
 	
 }
 
-form#rsvp-guest[data-abide=true] .error
+form#rsvp-guest[aria-invalid=false] .error
 {
     display: none;
 }
