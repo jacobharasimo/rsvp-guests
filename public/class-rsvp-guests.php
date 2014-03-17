@@ -108,6 +108,12 @@
 			$response -> Message = "Form recieved";
 			$response -> Data = $data;
 		}		
+		//testing code... make it invalid
+		foreach ($response -> Data as $item) {
+			$item -> Invalid = true;
+			$item -> ErrorMessage = "Samlple";
+			# code...
+		}
 
 
 

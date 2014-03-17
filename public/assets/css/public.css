@@ -173,17 +173,17 @@ box-sizing: border-box;
 #rsvp-guest small.error {
     display: block;
     padding: 0.375em 0.25em;
-    margin-top: -2.3125em;
-    margin-bottom: 1em;
+    margin-top: -2.4em;    
     font-size: 0.75em;
     font-weight: bold;
     background: #c60f13;
     color: white;
-
     display: block;
 	position: absolute;
 	width: 92.5%;
 	margin-bottom:0;
+    padding-top:0;
+    padding-bottom:0;
 }
 
 #rsvp-guest .error input,
@@ -238,6 +238,10 @@ box-sizing: border-box;
 #rsvp-guest input[type="submit"]{
     margin-top:1em;
 	background-color:#F07677;
+    margin-bottom: 1em;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
 }
 #rsvp-guest input[type="submit"][aria-disabled=true],
 #rsvp-guest input[type="submit"]:disabled{
@@ -248,6 +252,11 @@ box-sizing: border-box;
 form#rsvp-guest[aria-invalid=false] .error
 {
     display: none;
+}
+
+#rsvp-guest input[type="submit"][aria-disabled=false]:hover,
+#rsvp-guest input[type="submit"]:hover{
+background-color:#ee8a8b;
 }
 
 #rsvp-guest input[type="submit"][aria-disabled=true]:hover,
@@ -268,4 +277,15 @@ form#rsvp-guest[aria-invalid=false] .error
         position: relative;
         width: 100%;
     }
+}
+.loading-icon
+{
+    display: inline-block;
+    width: 16px;
+    background: url(../../../assets/loading.gif) no-repeat 50% 50%;    
+    line-height: 36px;
+    height: 36px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    vertical-align: top;
 }
