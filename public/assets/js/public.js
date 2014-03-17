@@ -1,5 +1,25 @@
+
+(function($) {
+$.fn.getType = function() {
+   var a = $("#rsvp-guest").serializeArray();
+   
+};
+})(jQuery);
+
 (function ( $ ) {
 	"use strict";
+
+
+	function getType(array){
+		for(var i = 0; i < array.length;++i){
+				var item = array [i];
+				item.type=$("#"+item.name).data('type');
+				if(!item.type){
+					item.type="text";
+				}
+			}
+		return array;		
+	}
 
 	$(function () {
 		var submitButton = $("#rsvp-guest").find("input[type=submit]").first();
@@ -22,7 +42,7 @@
 			rsvp_form.find(".loading-icon").show();
 			$.post(ajaxurl.location,{
 				action: 'my_custom_handler',
-				formData:JSON.stringify(rsvp_form.serializeArray()),
+				formData:JSON.stringify(getType(rsvp_form.serializeArray()))
 			},function(response){
 				response = JSON.parse(response);
 				if(response.Success){											
@@ -53,7 +73,7 @@
 				responseMessage.text(response.Message)
 			}).fail(function(){
 				rsvp_form.attr("aria-invalid","true");
-					rsvp_form.prop("aria-invalid","true");
+				rsvp_form.prop("aria-invalid","true");
 				responseMessage.text("Server error, try again later")
 			});
 		}

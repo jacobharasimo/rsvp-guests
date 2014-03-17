@@ -25,21 +25,21 @@
 	<div class="row">
 		<div class="columns large-12">
 			<label for="rsvp_name">Name:</label>			
-			<input id="rsvp_name" type="text" name="rsvp_name" value=""  aria-required="true" aria-invalid="false" required>
+			<input id="rsvp_name" type="text" name="rsvp_name" value=""  aria-required="true" aria-invalid="false" required data-type="text">
 			<small class="error" for="rsvp_name"></small>
 		</div>
 	</div>
 	<div class="row">
 		<div class="columns large-12">			
 			<label for="rsvp_email">Email:</label>
-			<input id="rsvp_email" type="email" name="rsvp_email" value="" aria-required="true" aria-invalid="false" required>
+			<input id="rsvp_email" type="email" name="rsvp_email" value="" aria-required="true" aria-invalid="false" required data-type="email">
 			<small class="error" for="rsvp_email"></small>
 		</div>
 	</div>
 	<div class="row">
 		<div class="columns large-12">			
 			<label for="rsvp_guests">Guests:</label>
-			<select name="rsvp_guests" id="rsvp_guests" aria-required="true" aria-invalid="false" required>
+			<select name="rsvp_guests" id="rsvp_guests" aria-required="true" aria-invalid="false" required data-type="int">
 				<option value="1">1</option>
 				<option value="2">2</option>
 				<option value="3">3</option>
@@ -53,7 +53,7 @@
 	<div class="row">
 		<div class="columns large-12">
 			<label for="rsvp_attending" >I am attending...</label>			
-			<select id="rsvp_attending" name="rsvp_attending" aria-required="true" aria-invalid="false" required>									
+			<select id="rsvp_attending" name="rsvp_attending" aria-required="true" aria-invalid="false" required>
 				<option value="Ceremony">Ceremony</option>
 				<option value="Party">Party</option>
 			</select>
