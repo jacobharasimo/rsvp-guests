@@ -12,7 +12,6 @@
  * @copyright 2014 Your Name or Company Name
  */
 global $wpdb; 
-$wpdb->show_errors();
 $my_plugin_table = $wpdb->prefix .  Rsvp_Guests::TABLESUFFEX;
 $my_plugin_options_table= $wpdb->prefix . Rsvp_Guests::TABLESUFFEX.'_options';
 if(isset($_POST['submitbulkaction'])){

@@ -82,19 +82,68 @@
 			add_filter( '@TODO', array( $this, 'filter_method_name' ) );
 		}
 		public function my_custom_handler(){		
-			$wpdb->show_errors();
+			$invalidTextMessage="";
+			$invalidEmailMessage="";
+			$successMessage="";
+			$invalidFormMessage="";
+			$duplicateAttendeeMessage="";
+			$serverErrorMessage="";
+			global $wpdb; 			
+
 			$my_plugin_table = $wpdb->prefix .  Rsvp_Guests::TABLESUFFEX;
 			$my_plugin_options_table= $wpdb->prefix . Rsvp_Guests::TABLESUFFEX.'_options';
 			$getSettingSql = "SELECT name, defaultValue, value FROM $my_plugin_options_table";
-			$settingsResults = $wpdb->get_results($getSettingSql);
+			$result = $wpdb->get_results($getSettingSql);
+
+			foreach ($result as $key => $value) {
+				switch($value->name){
+					case 'textFieldError':					
+						$invalidTextMessage=$value->defaultValue;
+						if(!empty($value->value)){
+							$invalidTextMessage=$value->value;
+						}
+						break;					
+					case 'emailFieldError':
+						$invalidTextMessage=$value->defaultValue;
+						if(!empty($value->value)){
+							$invalidTextMessage=$value->value;
+						}
+						break;
+					case 'successMessage':
+						$invalidTextMessage=$value->defaultValue;
+						if(!empty($value->value)){
+							$invalidTextMessage=$value->value;
+						}
+						break;
+					case 'invalidMessage':
+						$invalidFormMessage=$value->defaultValue;
+						if(!empty($value->value)){
+							$invalidFormMessage=$value->value;
+						}
+						break;
+					case 'duplicateMessage':
+						$duplicateAttendeeMessage=$value->defaultValue;						
+						if(!empty($value->value)){
+							$duplicateAttendeeMessage=$value->value;							
+						}
+						break;
+					case 'serverError':
+						$serverErrorMessage=$value->defaultValue;
+						if(!empty($value->value)){
+							$serverErrorMessage=$value->value;
+						}
+						break;
+				}
+			}
+			
 			$response = new RsvpAjaxRequest();		
-			$response -> Message = "Server Error Parsing Data";
+			$response -> Message = $serverErrorMessage;
 			$data = json_decode(stripslashes($_REQUEST['formData']));		
 			$respose -> Data = json_last_error();
 			$isValid = true;
 			if(!$response -> Data){
 				$response -> Success = true;
-				$response -> Message = "See you there!";
+				$response -> Message = $successMessage;
 				$response -> Data = $data;
 			}				
 			//testing code... make it invalid
@@ -103,25 +152,36 @@
 				switch($item->type){
 					case "email":
 						if(!is_email( $item -> value )){
-							$isValid=false;
+							$isValid  =false;
 							$item -> invalid = true;
-							$item -> ErrorMessage = "Invalid email address.";
+							$item -> ErrorMessage = $invalidEmailMessage;
+							
+						}
+						//check to see if the email already exists
+						$findUser = "SELECT count(*) FROM $my_plugin_table WHERE email = 'asdfsf@sdsfsda.ca'";
+						$user_count = $wpdb->get_var($findUser);						
+						if($user_count>0){
+							$isValid = false;
+							$item -> invalid = true;
+							$item -> ErrorMessage = $duplicateAttendeeMessage;
+							$response -> Message = $duplicateAttendeeMessage;
 						}
 						break;
 					default: 
 						if(empty($item->value)){
-							$isValid=false;
+							$isValid = false;
 							$item -> invalid = true;
-							$item -> ErrorMessage ="text must not be empty.";
+							$item -> ErrorMessage =$invalidTextMessage;
 						}					
 						break;
 				}						
 			}
 			if(!$isValid){
 				$response -> Success = false;
-				$response -> Message = "Thats not right, try again.";
+				//$response -> Message = $invalidFormMessage;
 			}
 			else{
+				//$wpdb->insert( $my_plugin_table, array( 'name' => "sample1", 'email' => "sample2",'event'=>'sample2','num_guests'=>2 ) );
 				//insert the entry into the DB here
 
 			}
