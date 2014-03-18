@@ -134,8 +134,7 @@
 						}
 						break;
 				}
-			}
-			
+			}			
 			$response = new RsvpAjaxRequest();		
 			$response -> Message = $serverErrorMessage;
 			$data = json_decode(stripslashes($_REQUEST['formData']));		
@@ -153,24 +152,22 @@
 					case "email":
 						if(!is_email( $item -> value )){
 							$isValid  =false;
-							$item -> invalid = true;
+							$item -> Invalid = true;
 							$item -> ErrorMessage = $invalidEmailMessage;
-							
 						}
 						//check to see if the email already exists
 						$findUser = "SELECT count(*) FROM $my_plugin_table WHERE email = 'asdfsf@sdsfsda.ca'";
 						$user_count = $wpdb->get_var($findUser);						
 						if($user_count>0){
 							$isValid = false;
-							$item -> invalid = true;
-							$item -> ErrorMessage = $duplicateAttendeeMessage;
-							$response -> Message = $duplicateAttendeeMessage;
+							$item -> Invalid = true;
+							$item -> ErrorMessage = $duplicateAttendeeMessage;				
 						}
 						break;
 					default: 
 						if(empty($item->value)){
 							$isValid = false;
-							$item -> invalid = true;
+							$item -> Invalid = true;
 							$item -> ErrorMessage =$invalidTextMessage;
 						}					
 						break;
@@ -178,7 +175,7 @@
 			}
 			if(!$isValid){
 				$response -> Success = false;
-				//$response -> Message = $invalidFormMessage;
+				$response -> Message = $invalidFormMessage;
 			}
 			else{
 				//$wpdb->insert( $my_plugin_table, array( 'name' => "sample1", 'email' => "sample2",'event'=>'sample2','num_guests'=>2 ) );

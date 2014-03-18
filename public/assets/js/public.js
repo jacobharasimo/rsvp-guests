@@ -57,7 +57,7 @@ $.fn.getType = function() {
 				else{
 					rsvp_form.attr("aria-invalid","true");
 					rsvp_form.prop("aria-invalid","true");
-					//check the response and find teh invalid elements to mark them
+					//check the response and find the invalid elements to mark them
 					var formElements = response.Data;
 					for(var i = 0; i<formElements.length;++i){
 						var item = response.Data[i];						
@@ -69,7 +69,9 @@ $.fn.getType = function() {
 					}						
 				}
 				rsvp_form.find(".loading-icon").fadeOut('fast');
-				responseArea.fadeIn('slow').delay(1500).fadeOut('fast');
+				responseArea.fadeIn('slow',function(){
+					$(this).delay(1500).fadeOut('fast');
+				});
 				responseMessage.text(response.Message)
 			}).fail(function(){
 				rsvp_form.attr("aria-invalid","true");
