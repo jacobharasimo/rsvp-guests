@@ -11,9 +11,7 @@
  * @link      
  * @copyright 2014 Jacob Harasimo
  */
-
 ?>
-
 <!-- This file is used to markup the public facing aspect of the plugin. -->
 <form method="post" class="" id="rsvp-guest" aria-invalid="false">				
 	<div class="row">
@@ -65,7 +63,6 @@
 			<input type="submit" value="I am attending" role="button" aria-disabled="false"><span class="loading-icon" style="display:none;"></span>
 		</div>
 	</div>
-	
 	<!-- style="visibility: collapse;" -->
 	<div class="row response">
 		<div class="columns response">
@@ -73,8 +70,5 @@
 				<p class="response-text"></p>				
 			</div>		
 		</div>		
-
 	</div>
-	
-	
 </form>

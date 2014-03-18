@@ -24,28 +24,20 @@
  * Domain Path:       
  * GitHub Plugin URI: https://github.com/<owner>/<repo>
  */
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
-
 /*----------------------------------------------------------------------------*
  * Public-Facing Functionality
  *----------------------------------------------------------------------------*/
-
 require_once( plugin_dir_path( __FILE__ ) . 'public/class-rsvp-guests.php' );
-
 register_activation_hook( __FILE__, array( 'Rsvp_Guests', 'activate' ) );
 register_deactivation_hook( __FILE__, array( 'Rsvp_Guests', 'deactivate' ) );
-
-
 add_action( 'plugins_loaded', array( 'Rsvp_Guests', 'get_instance' ) );
-
 /*----------------------------------------------------------------------------*
  * Dashboard and Administrative Functionality
  *----------------------------------------------------------------------------*/
-
 /*
  * If you want to include Ajax within the dashboard, change the following
  * conditional to:
@@ -57,8 +49,7 @@ add_action( 'plugins_loaded', array( 'Rsvp_Guests', 'get_instance' ) );
  * The code below is intended to to give the lightest footprint possible.
  */
 if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
-
 	require_once( plugin_dir_path( __FILE__ ) . 'admin/class-rsvp-guests-admin.php' );
 	add_action( 'plugins_loaded', array( 'Rsvp_Guests_Admin', 'get_instance' ) );
-
 }
+;?>

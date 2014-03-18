@@ -11,12 +11,12 @@
  * @link      http://example.com
  * @copyright 2014 Your Name or Company Name
  */
-global $wpdb;
-$my_plugin_table = $wpdb->prefix . 'rsvp_guests';
-
-if(isset($_POST['submitbulkaction']))
-{
-	switch($_POST['action2']){
+global $wpdb; 
+$wpdb->show_errors();
+$my_plugin_table = $wpdb->prefix .  Rsvp_Guests::TABLESUFFEX;
+$my_plugin_options_table= $wpdb->prefix . Rsvp_Guests::TABLESUFFEX.'_options';
+if(isset($_POST['submitbulkaction'])){
+	switch($_POST['bulkaction']){
 		case 'delete':					
 			foreach ((array) $_POST['guest'] as $id) {				
 				$wpdb->delete( $my_plugin_table, array( 'id' => $id ) );
@@ -27,11 +27,22 @@ if(isset($_POST['submitbulkaction']))
 			break;
 	}	
 }
-
+if(isset($_POST['submitsettings'])){		
+	$serverError_ = stripslashes_deep($_POST['serverError_']);	
+	$textFieldError=stripslashes_deep($_POST['textFieldError_']);
+	$emailFieldError=stripslashes_deep($_POST['emailFieldError_']);
+	$successMessage=stripslashes_deep($_POST['successMessage_']);
+	$invalidMessage=stripslashes_deep($_POST['invalidMessage_']);
+	$duplicateMessage=stripslashes_deep($_POST['duplicateMessage_']);
+	$wpdb->update( $my_plugin_options_table, array('value'=>$serverError_), array( 'name' => 'serverError' ));
+	$wpdb->update( $my_plugin_options_table, array('value'=>$serverError_), array( 'name' => 'textFieldError' ));
+	$wpdb->update( $my_plugin_options_table, array('value'=>$serverError_), array( 'name' => 'emailFieldError' ));
+	$wpdb->update( $my_plugin_options_table, array('value'=>$serverError_), array( 'name' => 'successMessage' ));
+	$wpdb->update( $my_plugin_options_table, array('value'=>$serverError_), array( 'name' => 'invalidMessage' ));
+	$wpdb->update( $my_plugin_options_table, array('value'=>$serverError_), array( 'name' => 'duplicateMessage' ));
+}
 $getSql = "SELECT * FROM $my_plugin_table";
 $result = $wpdb->get_results($getSql);
-
-
 $guestRows="";
 foreach ($result as $key=>$user) {
 	$rowStyle = $key%2==0?'alternate':'';
@@ -46,10 +57,20 @@ foreach ($result as $key=>$user) {
 		'<td class="guests column-guests">'.$user->num_guests.'</td>'.							
 		'</tr>';		
 }
-
-
-
-?>
+$getSettingSql = "SELECT name, defaultValue, value, inputLabel FROM $my_plugin_options_table";
+$settingsResults = $wpdb->get_results($getSettingSql);
+$settingsData="";
+foreach ($settingsResults as $key=>$user) {
+	$settingsData .= '<tr valign="top">'.
+		'<th scope="row">'.
+			'<label for="'.$user->name.' ">'.$user->inputLabel.'</label>'.
+		'</th>'.
+		'<td>'.
+			'<input name="'.$user->name.' " type="text" id="'.$user->name.' " placeholder="'.$user->defaultValue.'" value="'.$user->value.'" class="regular-text">'.
+		'</td>'.
+	'</tr>';
+}
+;?>
 
 <div class="wrap">
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
@@ -130,7 +151,7 @@ foreach ($result as $key=>$user) {
 		</table>
 		<div class="tablenav bottom">
 			<div class="alignleft actions bulkactions">
-				<select name="action2">
+				<select name="bulkaction">
 					<option value="-1" selected="selected">Bulk Actions</option>
 					<option value="delete">Delete</option>
 				</select>
@@ -139,15 +160,13 @@ foreach ($result as $key=>$user) {
 		</div>
 	</form>
 	<h3>Settings</h3>
-	<form method="post" action="options.php">
+	
+	<form method="post" action="">
 		<table class="form-table">
 			<tbody>
-				<tr>
-					<th></th>
-					<td></td>			
-				</tr>
+				<?php echo ( $settingsData); ?>
 			</tbody>
 		</table>
-		<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
+		<p class="submit"><input type="submit" name="submitsettings" id="submitsettings" class="button button-primary" value="Save Settings"></p>
 	</form>
 </div>
