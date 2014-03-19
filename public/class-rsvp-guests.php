@@ -88,13 +88,18 @@
 			$invalidFormMessage="";
 			$duplicateAttendeeMessage="";
 			$serverErrorMessage="";
-			global $wpdb; 			
+			$attendingName="";
+			$attendingEmail="";
+			$attendingNumberGuests=0;
+			$attendingEvent="";
 
+			global $wpdb; 			
+			//Connec tto the WP DB and retrieve the plugin options (error messages)
 			$my_plugin_table = $wpdb->prefix .  Rsvp_Guests::TABLESUFFEX;
 			$my_plugin_options_table= $wpdb->prefix . Rsvp_Guests::TABLESUFFEX.'_options';
 			$getSettingSql = "SELECT name, defaultValue, value FROM $my_plugin_options_table";
 			$result = $wpdb->get_results($getSettingSql);
-
+			//assign the error messages, if the user has not set one use the default.
 			foreach ($result as $key => $value) {
 				switch($value->name){
 					case 'textFieldError':					
@@ -135,6 +140,7 @@
 						break;
 				}
 			}			
+
 			$response = new RsvpAjaxRequest();		
 			$response -> Message = $serverErrorMessage;
 			$data = json_decode(stripslashes($_REQUEST['formData']));		
@@ -144,10 +150,10 @@
 				$response -> Success = true;
 				$response -> Message = $successMessage;
 				$response -> Data = $data;
-			}				
-			//testing code... make it invalid
+			}							
 			foreach ($response -> Data as $item) {
 				$item -> Invalid = false;
+				//type check for server side validation
 				switch($item->type){
 					case "email":
 						if(!is_email( $item -> value )){
@@ -164,6 +170,13 @@
 							$item -> ErrorMessage = $duplicateAttendeeMessage;				
 						}
 						break;
+					case 'int':
+						if(!is_int($item -> value)){
+							$isValid = false;
+							$item -> Invalid = true;
+							$item -> ErrorMessage = "Please enter a int.";
+						}
+						break;
 					default: 
 						if(empty($item->value)){
 							$isValid = false;
@@ -171,16 +184,32 @@
 							$item -> ErrorMessage =$invalidTextMessage;
 						}					
 						break;
-				}						
+				}			
+				//retrieve the information to commit to the DB
+				if($isValid){
+					switch($item->name){
+						case 'rsvp_name':
+							$attendingName=$item->value;
+							break;
+						case 'rsvp_email':
+							$attendingEmail=$item->value;
+							break;
+						case 'rsvp_guests':					
+							$attendingNumberGuests=intval($item->value);
+							break;
+						case 'rsvp_attending':
+							$attendingEvent=$item->value;
+							break;
+					}			
+				}
 			}
 			if(!$isValid){
 				$response -> Success = false;
 				$response -> Message = $invalidFormMessage;
 			}
 			else{
-				//$wpdb->insert( $my_plugin_table, array( 'name' => "sample1", 'email' => "sample2",'event'=>'sample2','num_guests'=>2 ) );
 				//insert the entry into the DB here
-
+				//$wpdb->insert( $my_plugin_table, array( 'name' => $attendingName, 'email' => $attendingEmail,'event'=>$attendingEvent,'num_guests'=>$attendingNumberGuests ) );
 			}
 			die(json_encode($response));
 		}

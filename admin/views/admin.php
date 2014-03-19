@@ -159,7 +159,7 @@ foreach ($settingsResults as $key=>$user) {
 		</div>
 	</form>
 	<h3>Settings</h3>
-	
+	<P>Leave fields blank to use default messages<p>
 	<form method="post" action="">
 		<table class="form-table">
 			<tbody>
