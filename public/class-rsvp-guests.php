@@ -83,6 +83,7 @@
 		}
 		public function my_custom_handler(){		
 			$invalidTextMessage="";
+			$invalidIntMessage="not a valid number";
 			$invalidEmailMessage="";
 			$successMessage="";
 			$invalidFormMessage="";
@@ -137,7 +138,7 @@
 						if(!empty($value->value)){
 							$serverErrorMessage=$value->value;
 						}
-						break;
+						break;					
 				}
 			}			
 
@@ -169,7 +170,14 @@
 							$item -> Invalid = true;
 							$item -> ErrorMessage = $duplicateAttendeeMessage;				
 						}
-						break;					
+						break;	
+					case "int": 
+							if(!is_int(intval($item -> value))){
+								$isValid = false;
+								$item -> Invalid = true;
+								$item -> ErrorMessage =$invalidIntMessage;
+							}														
+						break;				
 					default: 
 						if(empty($item->value)){
 							$isValid = false;
