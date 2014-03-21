@@ -18,13 +18,13 @@
 	 * @package Rsvp_Guests
 	 * @author  Jacob Harasimo <jacobharasimo@gmail.com>
 	 */
-	class RsvpAjaxRequest
-	{
+	class RsvpAjaxRequest{
 	    public $Success = false;
 	    public $Message = '';
 	    // method declaration
 	    public $Data;
 	}
+	
 	class Rsvp_Guests {
 		/**
 		 * Plugin version, used for cache-busting of style and script file references.
@@ -115,7 +115,7 @@
 						}
 						break;
 					case 'successMessage':
-						$invalidTextMessage=$value->defaultValue;
+						$successMessage=$value->defaultValue;
 						if(!empty($value->value)){
 							$invalidTextMessage=$value->value;
 						}
@@ -162,21 +162,14 @@
 							$item -> ErrorMessage = $invalidEmailMessage;
 						}
 						//check to see if the email already exists
-						$findUser = "SELECT count(*) FROM $my_plugin_table WHERE email = 'asdfsf@sdsfsda.ca'";
-						$user_count = $wpdb->get_var($findUser);						
+						$findUser = "SELECT count(*) FROM $my_plugin_table WHERE email = '". $item -> value."'";
+						$user_count = $wpdb->get_var($findUser);												
 						if($user_count>0){
 							$isValid = false;
 							$item -> Invalid = true;
 							$item -> ErrorMessage = $duplicateAttendeeMessage;				
 						}
-						break;
-					case 'int':
-						if(!is_int($item -> value)){
-							$isValid = false;
-							$item -> Invalid = true;
-							$item -> ErrorMessage = "Please enter a int.";
-						}
-						break;
+						break;					
 					default: 
 						if(empty($item->value)){
 							$isValid = false;
@@ -209,7 +202,7 @@
 			}
 			else{
 				//insert the entry into the DB here
-				//$wpdb->insert( $my_plugin_table, array( 'name' => $attendingName, 'email' => $attendingEmail,'event'=>$attendingEvent,'num_guests'=>$attendingNumberGuests ) );
+				$wpdb->insert( $my_plugin_table, array( 'name' => $attendingName, 'email' => $attendingEmail,'event'=>$attendingEvent,'num_guests'=>$attendingNumberGuests ) );
 			}
 			die(json_encode($response));
 		}
@@ -353,12 +346,10 @@
 		 * @since    1.0.0
 		 */
 		private static function single_activate() {		
-
 			global $wpdb;
 			global $my_plugin_options_table;
 			global $my_plugin_table;
-			global $my_plugin_db_version;
-			
+			global $my_plugin_db_version;			
 			if ( $wpdb->get_var( "show tables like '$my_plugin_table'" ) != $my_plugin_table ) {
 				$pluginTable = "CREATE TABLE $my_plugin_table (". 
 				    "id int(11) NULL AUTO_INCREMENT,".
@@ -384,10 +375,8 @@
 					"UNIQUE KEY id (id)". 
 				         ")";
 				
-		        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );	
-		     
+		        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );			    
 				dbDelta( $pluginOptionsTable );	
-
 				//inset default values
 				$wpdb->insert( $my_plugin_options_table, array( 'name' => "textFieldError", 'defaultValue' => "text must not be empty.",'inputLabel'=>'Invalid text filed' ) );
 				$wpdb->insert( $my_plugin_options_table, array( 'name' => "emailFieldError", 'defaultValue' => "Invalid email address.",'inputLabel'=>'Invalid Email filed'  ) );
@@ -395,9 +384,7 @@
 				$wpdb->insert( $my_plugin_options_table, array( 'name' => "invalidMessage", 'defaultValue' => "Thats not right, try again.",'inputLabel'=>'Invalid Form Message'  ) );
 				$wpdb->insert( $my_plugin_options_table, array( 'name' => "duplicateMessage", 'defaultValue' => "You replied before.",'inputLabel'=>'Duplicate Attendee Message'  ) );
 				$wpdb->insert( $my_plugin_options_table, array( 'name' => "serverError", 'defaultValue' => "Server Error Parsing Data.",'inputLabel'=>'Server Error Message'  ) );
-			}			
-			
-
+			}					
 		}
 		/**
 		 * Fired for each blog when the plugin is deactivated.
