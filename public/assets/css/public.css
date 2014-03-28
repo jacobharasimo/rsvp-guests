@@ -82,7 +82,7 @@ box-sizing: border-box;}
     color: rgba(0, 0, 0, 0.75);
     display: block;
     font-size: 0.875em;
-    margin: 0 0 2em 0;
+    margin: 0 0 1em 0;
     padding: 0.5em;
     height: 2.3125em;
     width: 100%;
@@ -93,7 +93,7 @@ box-sizing: border-box;}
     -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
     transition: box-shadow 0.45s, border-color 0.45s ease-in-out;    
 }
-
+#rsvp-guest h4{margin-top:.2em;margin-bottom:.2em;}
 #rsvp-guest input[type="text"]:focus,
 #rsvp-guest input[type="password"]:focus,
 #rsvp-guest input[type="date"]:focus,
@@ -171,21 +171,24 @@ box-sizing: border-box;
 }
 
 #rsvp-guest small.error {
-    display: block;
-    padding: 0.375em 0.25em;
-    margin-top: -2.4em;    
-    font-size: 0.75em;
-    font-weight: bold;
-    background: #c60f13;
-    color: white;
-    display: block;
-	position: absolute;
-	width: 92.5%;
-	margin-bottom:0;
-    padding-top:0;
-    padding-bottom:0;
+   display: block;
+padding: 0.375em 0.25em;
+margin-top: -1.9em;
+font-size: 0.75em;
+font-weight: bold;
+background: #c60f13;
+color: white;
+display: block;
+position: absolute;
+width: 90.1%;
+margin-bottom: 0;
+padding-top: 0;
+padding-bottom: 0;
 }
-
+#rsvp-guest input[type="text"],#rsvp-guest input[type="email"]{padding: 5px;
+line-height: 1.4em;
+height: 2em;
+font-size: 1.7em}
 #rsvp-guest .error input,
 #rsvp-guest .error textarea,
 #rsvp-guest .error select {
