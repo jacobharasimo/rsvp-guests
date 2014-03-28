@@ -1,36 +1,59 @@
 /* This stylesheet is used to style the public-facing components of the plugin. */
-#rsvp-guest{width: 100%;
-position: relative;}
-
-#rsvp-guest .columns.response{height:3em;overflow: hidden;}
-#rsvp-guest .response-area{height:100%;color:white;display:none;margin: 0;padding-left: .5em;
-padding-top: .5em;
+#rsvp-guest {
+    width: 100%;
+    position: relative;
 }
 
-#rsvp-guest[aria-invalid=true] .response-area{background-color:red;}
-#rsvp-guest[aria-invalid=false] .response-area{background-color:green;}
-#rsvp-guest .response.error{background-color:red;}
-#rsvp-guest .response.success{background-color:green;}
+#rsvp-guest .columns.response {
+    height: 3em;
+    overflow: hidden;
+}
+
+#rsvp-guest .response-area {
+    height: 100%;
+    color: white;
+    display: none;
+    margin: 0;
+    padding-left: .5em;
+    padding-top: .5em;
+}
+
+#rsvp-guest[aria-invalid=true] .response-area {
+    background-color: red;
+}
+
+#rsvp-guest[aria-invalid=false] .response-area {
+    background-color: green;
+}
+
+#rsvp-guest .response.error {
+    background-color: red;
+}
+
+#rsvp-guest .response.success {
+    background-color: green;
+}
+
 #rsvp-guest .row {
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 auto;
     max-width: 75em;
-    *zoom: 1;
+    /*noinspection All*/
     -moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+    /*noinspection All*/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #rsvp-guest .row:before,
-#rsvp-guest  .row:after {
+#rsvp-guest .row:after {
     content: " ";
     display: table;
+    /*noinspection All*/
     -moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+    /*noinspection All*/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #rsvp-guest .row:after {
@@ -44,17 +67,23 @@ box-sizing: border-box;
     padding-right: 0.9375em;
     width: 100%;
     float: left;
+    /*noinspection All*/
     -moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+    /*noinspection All*/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-#rsvp-guest form{margin: 0;
+#rsvp-guest form {
+    margin: 0;
     padding: 0;
     direction: ltr;
--moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;}
+    /*noinspection All*/
+    -moz-box-sizing: border-box;
+    /*noinspection All*/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 #rsvp-guest form {
     margin: 0 0 1em;
@@ -77,6 +106,7 @@ box-sizing: border-box;}
     background-color: white;
     font-family: inherit;
     border: 1px solid #cccccc;
+    /*noinspection All*/
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.75);
@@ -86,14 +116,24 @@ box-sizing: border-box;}
     padding: 0.5em;
     height: 2.3125em;
     width: 100%;
+    /*noinspection All*/
     -moz-box-sizing: border-box;
+    /*noinspection All*/
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    /*noinspection All*/
     -webkit-transition: -webkit-box-shadow 0.45s, border-color 0.45s ease-in-out;
+    /*noinspection All*/
     -moz-transition: -moz-box-shadow 0.45s, border-color 0.45s ease-in-out;
-    transition: box-shadow 0.45s, border-color 0.45s ease-in-out;    
+    /*noinspection All*/
+    transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
 }
-#rsvp-guest h4{margin-top:.2em;margin-bottom:.2em;}
+
+#rsvp-guest h4 {
+    margin-top: .2em;
+    margin-bottom: .2em;
+}
+
 #rsvp-guest input[type="text"]:focus,
 #rsvp-guest input[type="password"]:focus,
 #rsvp-guest input[type="date"]:focus,
@@ -108,7 +148,9 @@ box-sizing: border-box;}
 #rsvp-guest input[type="time"]:focus,
 #rsvp-guest input[type="url"]:focus,
 #rsvp-guest textarea:focus {
+    /*noinspection All*/
     -webkit-box-shadow: 0 0 5px #999999;
+    /*noinspection All*/
     -moz-box-shadow: 0 0 5px #999999;
     box-shadow: 0 0 5px #999999;
     border-color: #999999;
@@ -149,20 +191,22 @@ box-sizing: border-box;}
 #rsvp-guest textarea[disabled] {
     background-color: #dddddd;
 }
+
 /* Adjust margin for form elements below */
 #rsvp-guest input[type="file"],
 #rsvp-guest input[type="checkbox"],
 #rsvp-guest input[type="radio"],
 #rsvp-guest select {
-	line-height:1;
-	font-size:14px;
-    margin: 0 0 1em 0;
-    margin-bottom: 2em;
+    line-height: 1;
+    font-size: 14px;
+    margin: 0 0 2em;
     width: 100%;
     padding: 0.4em;
+    /*noinspection All*/
     -moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
-box-sizing: border-box;
+    /*noinspection All*/
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Normalize file input width */
@@ -171,24 +215,25 @@ box-sizing: border-box;
 }
 
 #rsvp-guest small.error {
-   display: block;
-padding: 0.375em 0.25em;
-margin-top: -1.9em;
-font-size: 0.75em;
-font-weight: bold;
-background: #c60f13;
-color: white;
-display: block;
-position: absolute;
-width: 90.1%;
-margin-bottom: 0;
-padding-top: 0;
-padding-bottom: 0;
+    display: block;
+    margin-top: -1.9em;
+    font-size: 0.75em;
+    font-weight: bold;
+    background: #c60f13;
+    color: white;
+    position: absolute;
+    width: 90.1%;
+    margin-bottom: 0;
+    padding: 0 0.25em;
 }
-#rsvp-guest input[type="text"],#rsvp-guest input[type="email"]{padding: 5px;
-line-height: 1.4em;
-height: 2em;
-font-size: 1.7em}
+
+#rsvp-guest input[type="text"], #rsvp-guest input[type="email"] {
+    padding: 5px;
+    line-height: 1.4em;
+    height: 2em;
+    font-size: 1.7em
+}
+
 #rsvp-guest .error input,
 #rsvp-guest .error textarea,
 #rsvp-guest .error select {
@@ -208,6 +253,7 @@ font-size: 1.7em}
 #rsvp-guest .error label.error {
     color: #c60f13;
 }
+
 #rsvp-guest input.error,
 #rsvp-guest textarea.error,
 #rsvp-guest textarea[aria-invalid=true],
@@ -218,7 +264,7 @@ font-size: 1.7em}
 }
 
 #rsvp-guest input.error:focus,
-#rsvp-guest textarea.error:focus 
+#rsvp-guest textarea.error:focus
 #rsvp-guest textarea:focus[aria-invalid=true],
 #rsvp-guest input:focus[aria-invalid=true] {
     background: #fafafa;
@@ -238,34 +284,43 @@ font-size: 1.7em}
 #rsvp-guest label.error {
     color: #c60f13;
 }
-#rsvp-guest input[type="submit"]{
-    margin-top:1em;
-	background-color:#F07677;
+
+#rsvp-guest input[type="submit"] {
+    margin-top: 1em;
     margin-bottom: 1em;
+    /*noinspection All*/
     -webkit-transition: all 300ms ease-out;
+    /*noinspection All*/
     -moz-transition: all 300ms ease-out;
+    /*noinspection All*/
     transition: all 300ms ease-out;
-}
-#rsvp-guest input[type="submit"][aria-disabled=true],
-#rsvp-guest input[type="submit"]:disabled{
-	opacity:.7;
-	
+    background: #F07677;
+    text-decoration: none;
+    vertical-align: middle;
+    overflow: hidden;
+    font: normal 20px/28px Cinzel;
+    text-transform: uppercase;
 }
 
-form#rsvp-guest[aria-invalid=false] .error
-{
+#rsvp-guest input[type="submit"][aria-disabled=true],
+#rsvp-guest input[type="submit"]:disabled {
+    opacity: .7;
+
+}
+
+form#rsvp-guest[aria-invalid=false] .error {
     display: none;
 }
 
 #rsvp-guest input[type="submit"][aria-disabled=false]:hover,
-#rsvp-guest input[type="submit"]:hover{
-background-color:#ee8a8b;
+#rsvp-guest input[type="submit"]:hover {
+    background-color: #ee8a8b;
 }
 
 #rsvp-guest input[type="submit"][aria-disabled=true]:hover,
-#rsvp-guest input[type="submit"]:disabled:hover{
-	opacity:.7;
-	background-color: #F07677;
+#rsvp-guest input[type="submit"]:disabled:hover {
+    opacity: .7;
+    background-color: #F07677;
 }
 
 @media only screen {
@@ -276,16 +331,17 @@ background-color:#ee8a8b;
         padding-right: 0.9375em;
         float: left;
     }
+
     #rsvp-guest .large-12 {
         position: relative;
         width: 100%;
     }
 }
-.loading-icon
-{
+
+.loading-icon {
     display: inline-block;
     width: 16px;
-    background: url(../../../assets/loading.gif) no-repeat 50% 50%;    
+    background: url(../../../assets/loading.gif) no-repeat 50% 50%;
     line-height: 36px;
     height: 36px;
     margin-top: 12px;
