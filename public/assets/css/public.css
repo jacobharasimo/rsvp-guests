@@ -348,3 +348,4 @@ form#rsvp-guest[aria-invalid=false] .error {
     margin-bottom: 12px;
     vertical-align: top;
 }
+#rsvp-guest select#rsvp_guests{width:auto;}
